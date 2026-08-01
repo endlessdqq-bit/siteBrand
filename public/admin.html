@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Админка PAULEA</title>
+    <style>
+      :root {
+        --ink: #16110f;
+        --ink-soft: #4a4340;
+        --line: #d9d2ce;
+        --paper: #ffffff;
+        --bgpage: #f4f1ef;
+        --wine: #4a1222;
+        --wine-deep: #3c0e1b;
+        --gold: #b07d2c;
+        --green: #1f7a4d;
+        --red: #b03a2c;
+      }
+
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bgpage);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        padding-bottom: 64px;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+        color: var(--ink);
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: var(--wine-deep);
+        color: #fff;
+        padding: 12px 16px;
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+
+      .topbar__title {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .topbar__link {
+        flex: none;
+        margin-right: 4px;
+        padding: 8px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      .panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      h2,
+      h3 {
+        margin: 0 0 12px;
+        font-size: 18px;
+      }
+
+      .muted {
+        color: var(--ink-soft);
+        font-size: 15px;
+      }
+
+      .row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .row--between {
+        justify-content: space-between;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 8px;
+        margin: 16px 0;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
+        color: var(--ink);
+        font-size: 14px;
+        min-height: 42px;
+      }
+
+      .chip--active {
+        background: var(--wine);
+        border-color: var(--wine);
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .tag {
+        font-size: 13px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #efe6e8;
+        color: var(--wine);
+      }
+
+      .tag--done {
+        background: #e2f0e8;
+        color: var(--green);
+      }
+
+      .tag--cancel {
+        background: #f7e3e0;
+        color: var(--red);
+      }
+
+      .btn {
+        min-height: 48px;
+        padding: 12px 18px;
+        border: none;
+        border-radius: 10px;
+        background: var(--wine);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .btn--ghost {
+        background: var(--paper);
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      .btn--danger {
+        background: var(--paper);
+        color: var(--red);
+        border: 1px solid var(--red);
+      }
+
+      .btn--wide {
+        width: 100%;
+      }
+
+      .field {
+        margin-bottom: 14px;
+      }
+
+      .field label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        min-height: 46px;
+        padding: 11px 12px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .field textarea {
+        min-height: 90px;
+        resize: vertical;
+      }
+
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .check {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        font-size: 15px;
+      }
+
+      .check input {
+        width: 22px;
+        height: 22px;
+      }
+
+      .prod-row {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .prod-row img {
+        width: 64px;
+        height: 84px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex: none;
+        background: #eee;
+      }
+
+      /* редактор размеров */
+      .sizes-editor {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .size-row {
+        display: grid;
+        grid-template-columns: 1fr 132px 44px;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .size-row:last-child {
+        border-bottom: none;
+      }
+
+      .size-row input[type='text'] {
+        min-height: 44px;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        font-weight: 600;
+      }
+
+      .stepper {
+        display: grid;
+        grid-template-columns: 42px 1fr 42px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .stepper button {
+        min-height: 44px;
+        border: none;
+        background: #f2eeec;
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      .stepper input {
+        min-height: 44px;
+        border: none;
+        text-align: center;
+        font-weight: 700;
+        font-size: 17px;
+        width: 100%;
+        appearance: textfield;
+        -moz-appearance: textfield;
+      }
+
+      .stepper input::-webkit-outer-spin-button,
+      .stepper input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .size-del {
+        min-height: 44px;
+        border: none;
+        background: none;
+        color: var(--red);
+        font-size: 20px;
+      }
+
+      .size-row--off .stepper input {
+        color: var(--red);
+      }
+
+      .presets {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+
+      .photos {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+
+      .photo {
+        position: relative;
+        width: 78px;
+        height: 100px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+      }
+
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .photo--pick {
+        opacity: 0.75;
+      }
+
+      .photo--active {
+        border: 2px solid var(--wine);
+        opacity: 1;
+      }
+
+      .shots {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .shot {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        overflow: hidden;
+        background: #eee;
+      }
+
+      .shot img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+      }
+
+      .shot__main {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        background: var(--wine);
+        color: #fff;
+        font-size: 11px;
+        padding: 3px 7px;
+        border-radius: 6px;
+      }
+
+      .shot__del {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 34px;
+        height: 34px;
+        border: none;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--red);
+        font-size: 20px;
+        line-height: 1;
+        border-radius: 0 0 0 10px;
+      }
+
+      .shot__move {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .shot__move button {
+        min-height: 38px;
+        border: none;
+        border-top: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
+        font-size: 16px;
+      }
+
+      .shot__move button:first-child {
+        border-right: 1px solid var(--line);
+      }
+
+      .shot__move button[disabled] {
+        opacity: 0.35;
+      }
+
+      .cat-row {
+        border-top: 1px solid var(--line);
+        padding: 14px 0 4px;
+      }
+
+      .cat-row--off {
+        opacity: 0.65;
+      }
+
+      .cat-row__top {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .cat-row__top input {
+        flex: 1;
+        min-width: 0;
+        min-height: 46px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 0 12px;
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--ink);
+        background: var(--paper);
+      }
+
+      .cat-row__order {
+        display: flex;
+        gap: 6px;
+      }
+
+      .cat-row__order .chip {
+        min-width: 44px;
+        padding: 0 10px;
+        font-size: 17px;
+      }
+
+      .cat-row__order .chip[disabled] {
+        opacity: 0.4;
+      }
+
+      .cat-row__meta {
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin: 8px 0 10px;
+      }
+
+      .notice {
+        border: 1px solid var(--line);
+        background: #fff8e8;
+        border-radius: 10px;
+        padding: 14px;
+        font-size: 15px;
+        color: var(--ink);
+      }
+
+      .error {
+        border: 1px solid var(--red);
+        background: #fdeeeb;
+        color: var(--red);
+        border-radius: 10px;
+        padding: 12px 14px;
+        margin-bottom: 12px;
+        font-size: 15px;
+      }
+
+      @media (max-width: 420px) {
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+        .size-row {
+          grid-template-columns: 1fr 118px 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1 class="topbar__title">Админка</h1>
+      <a class="topbar__link" href="/">Витрина</a>
+    </header>
+    <main class="wrap" id="admin"></main>
+    <script src="/admin.js"></script>
+  </body>
+</html>

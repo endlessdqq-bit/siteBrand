@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>PAULEA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&display=swap" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <button class="topbar__back" id="backBtn" aria-label="Назад" hidden>←</button>
+      <button class="topbar__title" id="shopName" aria-label="На главную">pauléa</button>
+      <button class="cart-link" id="cartBtn" aria-label="Корзина">
+        👜<span class="cart-link__count" id="cartCount" hidden>0</span>
+      </button>
+    </header>
+
+    <main class="wrap" id="app">
+      <div class="empty">Загружаем каталог…</div>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

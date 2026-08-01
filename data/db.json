@@ -1,0 +1,2153 @@
+{
+  "shop": {
+    "name": "PAULEA",
+    "tagline": "Женская одежда с примеркой в магазине",
+    "currency": "₽",
+    "address": "г. Стерлитамак",
+    "workingHours": "ежедневно 10:00–21:00",
+    "lastSizeBadge": {
+      "enabled": true,
+      "text": "Последний размер"
+    }
+  },
+  "orderCounter": 0,
+  "categories": [
+    {
+      "id": "hoodie",
+      "name": "Худи",
+      "sortOrder": 1,
+      "isActive": true
+    },
+    {
+      "id": "tshirt",
+      "name": "Футболки",
+      "sortOrder": 2,
+      "isActive": true
+    },
+    {
+      "id": "dress",
+      "name": "Платья",
+      "sortOrder": 3,
+      "isActive": true
+    },
+    {
+      "id": "jeans",
+      "name": "Джинсы",
+      "sortOrder": 4,
+      "isActive": true
+    },
+    {
+      "id": "outerwear",
+      "name": "Верхняя одежда",
+      "sortOrder": 5,
+      "isActive": true
+    },
+    {
+      "id": "skirt",
+      "name": "Юбки",
+      "sortOrder": 6,
+      "isActive": true
+    }
+  ],
+  "products": [
+    {
+      "id": "prd_hoodie_oversize",
+      "categoryId": "hoodie",
+      "name": "Худи oversize молочный",
+      "description": "Плотный футер с начёсом, свободный крой, двойной капюшон. Рост модели 175 см, на ней размер M.",
+      "composition": "80% хлопок, 20% полиэстер",
+      "price": 4890,
+      "oldPrice": 5900,
+      "images": [
+        "/photos/hoodie.jpg",
+        "/photos/hoodie-2.jpg",
+        "/photos/hoodie-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_hoodie_zip",
+      "categoryId": "hoodie",
+      "name": "Худи на молнии",
+      "description": "Мягкий петельный футер, капюшон на кулиске и металлическая молния по всей длине. Свободная посадка, удобно носить на футболку и на тонкий гольф. Рост модели 175 см, на ней размер M.",
+      "composition": "77% хлопок, 23% полиэстер",
+      "price": 5290,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-hoodie-zip-1.jpg",
+        "/photos/p-hoodie-zip-2.jpg",
+        "/photos/p-hoodie-zip-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 2
+        },
+        {
+          "size": "S",
+          "stock": 3
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_hoodie_graphite",
+      "categoryId": "hoodie",
+      "name": "Худи oversize с капюшоном",
+      "description": "Плотный трёхнитевой футер, объёмный крой, спущенное плечо и двойной капюшон. Держит форму после стирки и не вытягивается в резинке. Рост модели 176 см, на ней размер M.",
+      "composition": "85% хлопок, 15% полиэстер",
+      "price": 4590,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-hoodie-graphite-1.jpg",
+        "/photos/p-hoodie-graphite-2.jpg",
+        "/photos/p-hoodie-graphite-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 3
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_hoodie_crop",
+      "categoryId": "hoodie",
+      "name": "Худи cropped",
+      "description": "Укороченная модель с широкой резинкой по низу — красиво открывает линию талии с джинсами с высокой посадкой. Тонкий футер, носится круглый год. Рост модели 174 см, на ней размер S.",
+      "composition": "95% хлопок, 5% эластан",
+      "price": 3990,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-hoodie-crop-1.jpg",
+        "/photos/p-hoodie-crop-2.jpg",
+        "/photos/p-hoodie-crop-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 1
+        },
+        {
+          "size": "S",
+          "stock": 4
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_hoodie_fleece",
+      "categoryId": "hoodie",
+      "name": "Худи флисовое",
+      "description": "Плюшевый флис с мягким ворсом, очень тёплое и невесомое. Прямой силуэт, широкие манжеты, капюшон держит форму. Рост модели 175 см, на ней размер M.",
+      "composition": "100% полиэстер (флис)",
+      "price": 5490,
+      "oldPrice": 6290,
+      "images": [
+        "/photos/p-hoodie-fleece-1.jpg",
+        "/photos/p-hoodie-fleece-2.jpg",
+        "/photos/p-hoodie-fleece-3.jpg",
+        "/photos/p-hoodie-fleece-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_hoodie_long",
+      "categoryId": "hoodie",
+      "name": "Худи удлинённое",
+      "description": "Длина ниже бедра, боковые разрезы и глубокий капюшон. Хорошо садится и на фигуру с формами, не сковывает движения. Рост модели 177 см, на ней размер L.",
+      "composition": "80% хлопок, 20% полиэстер",
+      "price": 5190,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-hoodie-long-1.jpg",
+        "/photos/p-hoodie-long-2.jpg",
+        "/photos/p-hoodie-long-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 3
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 2
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_hoodie_collar",
+      "categoryId": "hoodie",
+      "name": "Худи с высоким воротом",
+      "description": "Мягкий футер с начёсом и высокий воротник-стойка вместо капюшона — аккуратный вариант под пальто. Рукав со спущенным плечом. Рост модели 175 см, на ней размер M.",
+      "composition": "82% хлопок, 18% полиэстер",
+      "price": 5590,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-hoodie-collar-1.jpg",
+        "/photos/p-hoodie-collar-2.jpg",
+        "/photos/p-hoodie-collar-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 1
+        },
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_hoodie_basic",
+      "categoryId": "hoodie",
+      "name": "Худи базовое",
+      "description": "Тот самый ежедневный вариант: ровный крой, плотная резинка, аккуратные строчки. Не мнётся в дороге и легко сочетается с юбкой и с джинсами. Рост модели 175 см, на ней размер M.",
+      "composition": "80% хлопок, 20% полиэстер",
+      "price": 4290,
+      "oldPrice": 4990,
+      "images": [
+        "/photos/p-hoodie-basic-1.jpg",
+        "/photos/p-hoodie-basic-2.jpg",
+        "/photos/p-hoodie-basic-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_hoodie_embro",
+      "categoryId": "hoodie",
+      "name": "Худи с вышивкой",
+      "description": "Тональная вышивка на груди, плотный футер и мягкая внутренняя сторона с начёсом. Практичная модель на прохладные вечера. Рост модели 176 см, на ней размер M.",
+      "composition": "85% хлопок, 15% полиэстер",
+      "price": 4790,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-hoodie-embro-1.jpg",
+        "/photos/p-hoodie-embro-2.jpg",
+        "/photos/p-hoodie-embro-3.jpg",
+        "/photos/p-hoodie-embro-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 2
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_hoodie_zip_crop",
+      "categoryId": "hoodie",
+      "name": "Худи cropped на молнии",
+      "description": "Короткая модель на молнии с высокими карманами и мягкой резинкой. Отлично работает в спортивном образе и с широкими брюками. Рост модели 174 см, на ней размер S.",
+      "composition": "92% хлопок, 8% эластан",
+      "price": 4990,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-hoodie-zip-crop-1.jpg",
+        "/photos/p-hoodie-zip-crop-2.jpg",
+        "/photos/p-hoodie-zip-crop-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 4
+        },
+        {
+          "size": "S",
+          "stock": 3
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_tshirt_basic",
+      "categoryId": "tshirt",
+      "name": "Футболка базовая белая",
+      "description": "Плотный трикотаж 190 г/м², не просвечивает. Прямой силуэт, круглый вырез.",
+      "composition": "100% хлопок",
+      "price": 1690,
+      "oldPrice": null,
+      "images": [
+        "/photos/tshirt.jpg",
+        "/photos/tshirt-2.jpg",
+        "/photos/tshirt-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 3
+        },
+        {
+          "size": "S",
+          "stock": 4
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_tee_oversize",
+      "categoryId": "tshirt",
+      "name": "Футболка oversize",
+      "description": "Плотный хлопок 190 г/м², прямой объёмный силуэт и укреплённая горловина. Не просвечивает и держит форму. Рост модели 175 см, на ней размер M.",
+      "composition": "100% хлопок",
+      "price": 1890,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-tee-oversize-1.jpg",
+        "/photos/p-tee-oversize-2.jpg",
+        "/photos/p-tee-oversize-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 2
+        },
+        {
+          "size": "S",
+          "stock": 3
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_tee_crop",
+      "categoryId": "tshirt",
+      "name": "Футболка cropped",
+      "description": "Укороченная длина и мягкая горловина в рубчик. Идеальна с джинсами с высокой посадкой и юбкой миди. Рост модели 174 см, на ней размер S.",
+      "composition": "95% хлопок, 5% эластан",
+      "price": 1790,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-tee-crop-1.jpg",
+        "/photos/p-tee-crop-2.jpg",
+        "/photos/p-tee-crop-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 3
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_tee_print",
+      "categoryId": "tshirt",
+      "name": "Футболка с принтом",
+      "description": "Спокойный минималистичный принт, нанесённый мягкой печатью — не трескается и не грубит на ощупь. Прямой крой. Рост модели 175 см, на ней размер M.",
+      "composition": "100% хлопок",
+      "price": 2190,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-tee-print-1.jpg",
+        "/photos/p-tee-print-2.jpg",
+        "/photos/p-tee-print-3.jpg",
+        "/photos/p-tee-print-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 1
+        },
+        {
+          "size": "S",
+          "stock": 4
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_tee_slim",
+      "categoryId": "tshirt",
+      "name": "Футболка облегающая",
+      "description": "Тонкий эластичный трикотаж, аккуратно повторяет силуэт и не тянется в горловине. Хорошо смотрится под жакет. Рост модели 174 см, на ней размер S.",
+      "composition": "92% хлопок, 8% эластан",
+      "price": 1590,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-tee-slim-1.jpg",
+        "/photos/p-tee-slim-2.jpg",
+        "/photos/p-tee-slim-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_tee_long",
+      "categoryId": "tshirt",
+      "name": "Футболка удлинённая",
+      "description": "Длина чуть ниже бедра и небольшие боковые разрезы. Самостоятельный вариант под лосины и велосипедки. Рост модели 177 см, на ней размер M.",
+      "composition": "100% хлопок",
+      "price": 1990,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-tee-long-1.jpg",
+        "/photos/p-tee-long-2.jpg",
+        "/photos/p-tee-long-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 3
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 2
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_tee_vneck",
+      "categoryId": "tshirt",
+      "name": "Футболка с V-образным вырезом",
+      "description": "Мягкий V-образный вырез визуально удлиняет шею, ткань гладкая и приятная к телу. Прямой полуприлегающий крой. Рост модели 175 см, на ней размер M.",
+      "composition": "95% вискоза, 5% эластан",
+      "price": 1890,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-tee-vneck-1.jpg",
+        "/photos/p-tee-vneck-2.jpg",
+        "/photos/p-tee-vneck-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 1
+        },
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_tee_rib",
+      "categoryId": "tshirt",
+      "name": "Топ-футболка в рубчик",
+      "description": "Плотная лапша-рибана, которая красиво тянется и садится по фигуре. Короткий рукав и аккуратная бейка. Рост модели 174 см, на ней размер S.",
+      "composition": "70% вискоза, 25% полиэстер, 5% эластан",
+      "price": 1490,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-tee-rib-1.jpg",
+        "/photos/p-tee-rib-2.jpg",
+        "/photos/p-tee-rib-3.jpg",
+        "/photos/p-tee-rib-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_tee_stripe",
+      "categoryId": "tshirt",
+      "name": "Футболка в полоску",
+      "description": "Классическая тонкая полоска и мягкий хлопок с лёгкой текстурой. Спокойная база, которая освежает любой образ. Рост модели 175 см, на ней размер M.",
+      "composition": "100% хлопок",
+      "price": 2090,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-tee-stripe-1.jpg",
+        "/photos/p-tee-stripe-2.jpg",
+        "/photos/p-tee-stripe-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 2
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_tee_premium",
+      "categoryId": "tshirt",
+      "name": "Футболка премиум-хлопок",
+      "description": "Длинноволокнистый хлопок с шелковистым блеском, ткань плотная и совсем не прозрачная. Держит цвет после множества стирок. Рост модели 176 см, на ней размер M.",
+      "composition": "100% хлопок пима",
+      "price": 2390,
+      "oldPrice": 2790,
+      "images": [
+        "/photos/p-tee-premium-1.jpg",
+        "/photos/p-tee-premium-2.jpg",
+        "/photos/p-tee-premium-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 4
+        },
+        {
+          "size": "S",
+          "stock": 3
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_dress_midi",
+      "categoryId": "dress",
+      "name": "Платье миди шоколад",
+      "description": "Струящаяся ткань, пояс в комплекте, длина по середине икры. Подходит для офиса и ужина.",
+      "composition": "95% вискоза, 5% эластан",
+      "price": 6490,
+      "oldPrice": null,
+      "images": [
+        "/photos/dress.jpg",
+        "/photos/dress-2.jpg",
+        "/photos/dress-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": true
+    },
+    {
+      "id": "prd_dress_slip",
+      "categoryId": "dress",
+      "name": "Платье-комбинация",
+      "description": "Струящаяся ткань в бельевом стиле, тонкие бретели с регулировкой и косой крой по фигуре. Вечером — самостоятельно, днём — с футболкой под низ. Рост модели 176 см, на ней размер S.",
+      "composition": "100% полиэстер (сатин)",
+      "price": 5990,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-dress-slip-1.jpg",
+        "/photos/p-dress-slip-2.jpg",
+        "/photos/p-dress-slip-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 2
+        },
+        {
+          "size": "S",
+          "stock": 3
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_dress_linen",
+      "categoryId": "dress",
+      "name": "Платье из льна",
+      "description": "Умягчённый лён, который дышит в жару и красиво заламывается. Свободный силуэт, пояс в комплекте. Рост модели 175 см, на ней размер M.",
+      "composition": "55% лён, 45% вискоза",
+      "price": 6890,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-dress-linen-1.jpg",
+        "/photos/p-dress-linen-2.jpg",
+        "/photos/p-dress-linen-3.jpg",
+        "/photos/p-dress-linen-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 3
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_dress_shirt",
+      "categoryId": "dress",
+      "name": "Платье-рубашка",
+      "description": "Рубашечный воротник, застёжка на пуговицы по всей длине и мягкий пояс на талии. Удобно носить расстёгнутым как летний кардиган. Рост модели 175 см, на ней размер M.",
+      "composition": "100% вискоза",
+      "price": 6290,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-dress-shirt-1.jpg",
+        "/photos/p-dress-shirt-2.jpg",
+        "/photos/p-dress-shirt-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 1
+        },
+        {
+          "size": "S",
+          "stock": 4
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_dress_knit",
+      "categoryId": "dress",
+      "name": "Платье вязаное",
+      "description": "Плотная вязка с мягкой пряжей, силуэт по фигуре и длина миди. Тёплое, но не колется. Рост модели 174 см, на ней размер S.",
+      "composition": "50% вискоза, 30% полиамид, 20% шерсть",
+      "price": 7490,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-dress-knit-1.jpg",
+        "/photos/p-dress-knit-2.jpg",
+        "/photos/p-dress-knit-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_dress_maxi",
+      "categoryId": "dress",
+      "name": "Платье макси",
+      "description": "Длина в пол, отрезная линия под грудью и мягкие складки по юбке. Вечерний вариант, который не мнётся в дороге. Рост модели 178 см, на ней размер M.",
+      "composition": "95% полиэстер, 5% эластан",
+      "price": 8290,
+      "oldPrice": 9600,
+      "images": [
+        "/photos/p-dress-maxi-1.jpg",
+        "/photos/p-dress-maxi-2.jpg",
+        "/photos/p-dress-maxi-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 3
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 2
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_dress_wrap",
+      "categoryId": "dress",
+      "name": "Платье на запах",
+      "description": "Настоящий запах с завязками — регулируется под фигуру и красиво подчёркивает талию. Юбка с лёгким расширением. Рост модели 175 см, на ней размер M.",
+      "composition": "100% вискоза",
+      "price": 6790,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-dress-wrap-1.jpg",
+        "/photos/p-dress-wrap-2.jpg",
+        "/photos/p-dress-wrap-3.jpg",
+        "/photos/p-dress-wrap-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 1
+        },
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_dress_mini",
+      "categoryId": "dress",
+      "name": "Платье мини",
+      "description": "Короткая длина, аккуратные плечи и плотная ткань, которая держит форму. Хорошо работает с ботинками и с лодочками. Рост модели 174 см, на ней размер S.",
+      "composition": "97% хлопок, 3% эластан",
+      "price": 5490,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-dress-mini-1.jpg",
+        "/photos/p-dress-mini-2.jpg",
+        "/photos/p-dress-mini-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_dress_pleat",
+      "categoryId": "dress",
+      "name": "Платье плиссе",
+      "description": "Мелкая устойчивая плиссировка по всей юбке, мягкий верх и пояс на резинке. Двигается вместе с вами. Рост модели 176 см, на ней размер M.",
+      "composition": "100% полиэстер",
+      "price": 7190,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-dress-pleat-1.jpg",
+        "/photos/p-dress-pleat-2.jpg",
+        "/photos/p-dress-pleat-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 2
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_dress_cotton",
+      "categoryId": "dress",
+      "name": "Платье из хлопка",
+      "description": "Дышащий хлопок с лёгкой текстурой, свободный крой и накладные карманы. Самое удобное платье на каждый день. Рост модели 175 см, на ней размер M.",
+      "composition": "100% хлопок",
+      "price": 5890,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-dress-cotton-1.jpg",
+        "/photos/p-dress-cotton-2.jpg",
+        "/photos/p-dress-cotton-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 4
+        },
+        {
+          "size": "S",
+          "stock": 3
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_jeans_straight",
+      "categoryId": "jeans",
+      "name": "Джинсы прямые синие",
+      "description": "Высокая посадка, плотный деним без стрейча, длина по щиколотку.",
+      "composition": "100% хлопок",
+      "price": 5290,
+      "oldPrice": 6490,
+      "images": [
+        "/photos/jeans.jpg",
+        "/photos/jeans-2.jpg",
+        "/photos/jeans-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "26",
+          "stock": 1
+        },
+        {
+          "size": "27",
+          "stock": 2
+        },
+        {
+          "size": "28",
+          "stock": 0
+        },
+        {
+          "size": "29",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_jeans_mom",
+      "categoryId": "jeans",
+      "name": "Джинсы mom",
+      "description": "Высокая посадка, свободное бедро и сужение к низу. Плотный неэластичный деним, который со временем садится по фигуре. Рост модели 175 см, на ней размер 26.",
+      "composition": "100% хлопок",
+      "price": 4990,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-jeans-mom-1.jpg",
+        "/photos/p-jeans-mom-2.jpg",
+        "/photos/p-jeans-mom-3.jpg",
+        "/photos/p-jeans-mom-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "25",
+          "stock": 2
+        },
+        {
+          "size": "26",
+          "stock": 3
+        },
+        {
+          "size": "27",
+          "stock": 2
+        },
+        {
+          "size": "28",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_jeans_wide",
+      "categoryId": "jeans",
+      "name": "Джинсы широкие",
+      "description": "Прямая широкая штанина от бедра и длина в пол — визуально удлиняет ноги. Жёсткий деним держит форму. Рост модели 177 см, на ней размер 27.",
+      "composition": "99% хлопок, 1% эластан",
+      "price": 5590,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-jeans-wide-1.jpg",
+        "/photos/p-jeans-wide-2.jpg",
+        "/photos/p-jeans-wide-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "25",
+          "stock": 0
+        },
+        {
+          "size": "26",
+          "stock": 2
+        },
+        {
+          "size": "27",
+          "stock": 3
+        },
+        {
+          "size": "28",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_jeans_skinny",
+      "categoryId": "jeans",
+      "name": "Джинсы скинни",
+      "description": "Эластичный деним с хорошим восстановлением: облегает, но не сдавливает и не растягивается к вечеру. Рост модели 174 см, на ней размер 26.",
+      "composition": "92% хлопок, 6% полиэстер, 2% эластан",
+      "price": 4790,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-jeans-skinny-1.jpg",
+        "/photos/p-jeans-skinny-2.jpg",
+        "/photos/p-jeans-skinny-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "25",
+          "stock": 1
+        },
+        {
+          "size": "26",
+          "stock": 4
+        },
+        {
+          "size": "27",
+          "stock": 2
+        },
+        {
+          "size": "28",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_jeans_crop",
+      "categoryId": "jeans",
+      "name": "Джинсы укороченные",
+      "description": "Длина до косточки и ровная штанина — идеальны с лоферами и с ботинками. Плотный хлопок без лишней эластики. Рост модели 175 см, на ней размер 27.",
+      "composition": "100% хлопок",
+      "price": 5190,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-jeans-crop-1.jpg",
+        "/photos/p-jeans-crop-2.jpg",
+        "/photos/p-jeans-crop-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "25",
+          "stock": 0
+        },
+        {
+          "size": "26",
+          "stock": 0
+        },
+        {
+          "size": "27",
+          "stock": 1
+        },
+        {
+          "size": "28",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_jeans_flare",
+      "categoryId": "jeans",
+      "name": "Джинсы клёш",
+      "description": "Высокая посадка и выразительный клёш от колена. Стройнят силуэт и хорошо смотрятся с каблуком. Рост модели 178 см, на ней размер 27.",
+      "composition": "98% хлопок, 2% эластан",
+      "price": 5890,
+      "oldPrice": 6900,
+      "images": [
+        "/photos/p-jeans-flare-1.jpg",
+        "/photos/p-jeans-flare-2.jpg",
+        "/photos/p-jeans-flare-3.jpg",
+        "/photos/p-jeans-flare-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "25",
+          "stock": 3
+        },
+        {
+          "size": "26",
+          "stock": 2
+        },
+        {
+          "size": "27",
+          "stock": 2
+        },
+        {
+          "size": "28",
+          "stock": 2
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_jeans_boyfriend",
+      "categoryId": "jeans",
+      "name": "Джинсы boyfriend",
+      "description": "Свободный расслабленный крой с подворотом и мягкая посадка на бедре. Самая комфортная пара в шкафу. Рост модели 175 см, на ней размер 27.",
+      "composition": "100% хлопок",
+      "price": 5390,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-jeans-boyfriend-1.jpg",
+        "/photos/p-jeans-boyfriend-2.jpg",
+        "/photos/p-jeans-boyfriend-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "25",
+          "stock": 1
+        },
+        {
+          "size": "26",
+          "stock": 1
+        },
+        {
+          "size": "27",
+          "stock": 0
+        },
+        {
+          "size": "28",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_jeans_highwaist",
+      "categoryId": "jeans",
+      "name": "Джинсы с высокой посадкой",
+      "description": "Удлинённый пояс подтягивает силуэт, прямая штанина заканчивается ровно по полу. Плотный деним премиального плетения. Рост модели 176 см, на ней размер 26.",
+      "composition": "99% хлопок, 1% эластан",
+      "price": 5690,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-jeans-highwaist-1.jpg",
+        "/photos/p-jeans-highwaist-2.jpg",
+        "/photos/p-jeans-highwaist-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "25",
+          "stock": 0
+        },
+        {
+          "size": "26",
+          "stock": 1
+        },
+        {
+          "size": "27",
+          "stock": 0
+        },
+        {
+          "size": "28",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_jeans_culotte",
+      "categoryId": "jeans",
+      "name": "Джинсы-кюлоты",
+      "description": "Широкая укороченная штанина и высокий пояс — летний вариант из тонкого денима. Хорошо держит складку. Рост модели 175 см, на ней размер 27.",
+      "composition": "100% хлопок",
+      "price": 4890,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-jeans-culotte-1.jpg",
+        "/photos/p-jeans-culotte-2.jpg",
+        "/photos/p-jeans-culotte-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "25",
+          "stock": 2
+        },
+        {
+          "size": "26",
+          "stock": 2
+        },
+        {
+          "size": "27",
+          "stock": 1
+        },
+        {
+          "size": "28",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_jeans_cargo",
+      "categoryId": "jeans",
+      "name": "Джинсы карго",
+      "description": "Накладные карманы, свободная штанина и мягкий деним с лёгкой стиркой. Практичная модель на каждый день. Рост модели 176 см, на ней размер 27.",
+      "composition": "98% хлопок, 2% эластан",
+      "price": 5990,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-jeans-cargo-1.jpg",
+        "/photos/p-jeans-cargo-2.jpg",
+        "/photos/p-jeans-cargo-3.jpg",
+        "/photos/p-jeans-cargo-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "25",
+          "stock": 4
+        },
+        {
+          "size": "26",
+          "stock": 3
+        },
+        {
+          "size": "27",
+          "stock": 2
+        },
+        {
+          "size": "28",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_coat_wool",
+      "categoryId": "outerwear",
+      "name": "Пальто шерстяное бежевое",
+      "description": "Прямой крой на подкладе, два кармана, длина ниже колена. Демисезон.",
+      "composition": "70% шерсть, 30% полиэстер",
+      "price": 12900,
+      "oldPrice": null,
+      "images": [
+        "/photos/coat.jpg",
+        "/photos/coat-2.jpg",
+        "/photos/coat-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_outer_trench",
+      "categoryId": "outerwear",
+      "name": "Тренч",
+      "description": "Классический тренч с поясом, двубортной застёжкой и кокеткой на спине. Плотный хлопок с водоотталкивающей пропиткой. Рост модели 176 см, на ней размер M.",
+      "composition": "65% хлопок, 35% полиэстер",
+      "price": 11900,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-outer-trench-1.jpg",
+        "/photos/p-outer-trench-2.jpg",
+        "/photos/p-outer-trench-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 3
+        },
+        {
+          "size": "L",
+          "stock": 2
+        },
+        {
+          "size": "XL",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_outer_quilted",
+      "categoryId": "outerwear",
+      "name": "Куртка стёганая",
+      "description": "Мелкая стёжка, тёплый утеплитель и лёгкий вес — удобна в межсезонье. Воротник-стойка и карманы на молнии. Рост модели 175 см, на ней размер M.",
+      "composition": "Верх 100% полиэстер, утеплитель 100% полиэстер",
+      "price": 9490,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-outer-quilted-1.jpg",
+        "/photos/p-outer-quilted-2.jpg",
+        "/photos/p-outer-quilted-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 3
+        },
+        {
+          "size": "XL",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_outer_blazer",
+      "categoryId": "outerwear",
+      "name": "Жакет oversize",
+      "description": "Объёмный жакет со спущенным плечом и подкладкой в тон. Держит форму и работает вместо пальто в тёплую погоду. Рост модели 177 см, на ней размер M.",
+      "composition": "63% полиэстер, 33% вискоза, 4% эластан",
+      "price": 8290,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-outer-blazer-1.jpg",
+        "/photos/p-outer-blazer-2.jpg",
+        "/photos/p-outer-blazer-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 4
+        },
+        {
+          "size": "L",
+          "stock": 2
+        },
+        {
+          "size": "XL",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_outer_puffer",
+      "categoryId": "outerwear",
+      "name": "Пуховик",
+      "description": "Тёплый пуховик с широкими горизонтальными стёжками, глубоким капюшоном и внутренними манжетами. Комфортно до −20 °C. Рост модели 176 см, на ней размер M.",
+      "composition": "Верх 100% полиэстер, наполнитель пух/перо 80/20",
+      "price": 14900,
+      "oldPrice": 17900,
+      "images": [
+        "/photos/p-outer-puffer-1.jpg",
+        "/photos/p-outer-puffer-2.jpg",
+        "/photos/p-outer-puffer-3.jpg",
+        "/photos/p-outer-puffer-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "size": "L",
+          "stock": 1
+        },
+        {
+          "size": "XL",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_outer_leather",
+      "categoryId": "outerwear",
+      "name": "Куртка из эко-кожи",
+      "description": "Мягкая эко-кожа с матовой поверхностью, короткий силуэт и молнии на манжетах. Не скрипит и не деформируется. Рост модели 175 см, на ней размер M.",
+      "composition": "100% полиуретан, подкладка 100% полиэстер",
+      "price": 10900,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-outer-leather-1.jpg",
+        "/photos/p-outer-leather-2.jpg",
+        "/photos/p-outer-leather-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 3
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 2
+        },
+        {
+          "size": "XL",
+          "stock": 2
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_outer_cardigan",
+      "categoryId": "outerwear",
+      "name": "Кардиган длинный",
+      "description": "Длина ниже колена, мягкая пряжа и глубокие карманы. Носится как лёгкое пальто в тёплую осень. Рост модели 177 см, на ней размер M.",
+      "composition": "50% шерсть, 50% акрил",
+      "price": 6990,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-outer-cardigan-1.jpg",
+        "/photos/p-outer-cardigan-2.jpg",
+        "/photos/p-outer-cardigan-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 0
+        },
+        {
+          "size": "XL",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_outer_parka",
+      "categoryId": "outerwear",
+      "name": "Парка",
+      "description": "Утеплённая парка с кулиской на талии, капюшоном и большими карманами. Плотная ткань не продувается. Рост модели 176 см, на ней размер L.",
+      "composition": "Верх 100% полиамид, утеплитель 100% полиэстер",
+      "price": 12400,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-outer-parka-1.jpg",
+        "/photos/p-outer-parka-2.jpg",
+        "/photos/p-outer-parka-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 0
+        },
+        {
+          "size": "XL",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_outer_vest",
+      "categoryId": "outerwear",
+      "name": "Жилет стёганый",
+      "description": "Лёгкий стёганый жилет, который выручает в прохладное утро — надевается на худи и на рубашку. Рост модели 175 см, на ней размер M.",
+      "composition": "Верх 100% полиэстер, утеплитель 100% полиэстер",
+      "price": 6490,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-outer-vest-1.jpg",
+        "/photos/p-outer-vest-2.jpg",
+        "/photos/p-outer-vest-3.jpg",
+        "/photos/p-outer-vest-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        },
+        {
+          "size": "XL",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_outer_coat_robe",
+      "categoryId": "outerwear",
+      "name": "Пальто-халат",
+      "description": "Мягкое пальто без застёжки с широким поясом и спущенным плечом. Тёплая шерстяная смесь с гладкой подкладкой. Рост модели 178 см, на ней размер M.",
+      "composition": "70% шерсть, 30% полиэстер",
+      "price": 13900,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-outer-coat-robe-1.jpg",
+        "/photos/p-outer-coat-robe-2.jpg",
+        "/photos/p-outer-coat-robe-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 4
+        },
+        {
+          "size": "M",
+          "stock": 3
+        },
+        {
+          "size": "L",
+          "stock": 2
+        },
+        {
+          "size": "XL",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_skirt_pleated",
+      "categoryId": "skirt",
+      "name": "Юбка плиссе графит",
+      "description": "Мелкая складка, резинка на поясе, длина миди. Держит форму после стирки.",
+      "composition": "100% полиэстер",
+      "price": 3790,
+      "oldPrice": null,
+      "images": [
+        "/photos/skirt.jpg",
+        "/photos/skirt-2.jpg",
+        "/photos/skirt-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_skirt_satin",
+      "categoryId": "skirt",
+      "name": "Юбка миди сатиновая",
+      "description": "Гладкий сатин с мягким блеском, косой крой и пояс на резинке. Красиво двигается при ходьбе. Рост модели 175 см, на ней размер S.",
+      "composition": "100% полиэстер (сатин)",
+      "price": 4290,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-skirt-satin-1.jpg",
+        "/photos/p-skirt-satin-2.jpg",
+        "/photos/p-skirt-satin-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 2
+        },
+        {
+          "size": "S",
+          "stock": 3
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_skirt_denim",
+      "categoryId": "skirt",
+      "name": "Юбка джинсовая",
+      "description": "Плотный деним, прямой силуэт и разрез спереди. Пояс с высокой посадкой аккуратно подтягивает фигуру. Рост модели 174 см, на ней размер S.",
+      "composition": "100% хлопок",
+      "price": 3690,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-skirt-denim-1.jpg",
+        "/photos/p-skirt-denim-2.jpg",
+        "/photos/p-skirt-denim-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 3
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_skirt_maxi",
+      "categoryId": "skirt",
+      "name": "Юбка макси",
+      "description": "Длина в пол, мягкие складки от пояса и потайная молния сбоку. Ткань держит форму и не электризуется. Рост модели 178 см, на ней размер M.",
+      "composition": "95% полиэстер, 5% эластан",
+      "price": 4890,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-skirt-maxi-1.jpg",
+        "/photos/p-skirt-maxi-2.jpg",
+        "/photos/p-skirt-maxi-3.jpg",
+        "/photos/p-skirt-maxi-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 1
+        },
+        {
+          "size": "S",
+          "stock": 4
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_skirt_mini_wool",
+      "categoryId": "skirt",
+      "name": "Юбка мини шерстяная",
+      "description": "Тёплая шерстяная смесь, короткая длина и подкладка по всей юбке. Носится с плотными колготками и с ботинками. Рост модели 174 см, на ней размер S.",
+      "composition": "60% шерсть, 40% полиэстер",
+      "price": 3990,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-skirt-mini-wool-1.jpg",
+        "/photos/p-skirt-mini-wool-2.jpg",
+        "/photos/p-skirt-mini-wool-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": true
+    },
+    {
+      "id": "prd_skirt_leather",
+      "categoryId": "skirt",
+      "name": "Юбка из эко-кожи",
+      "description": "Матовая эко-кожа, прямой крой и разрез сзади. Мягкая изнутри, не сковывает шаг. Рост модели 175 см, на ней размер S.",
+      "composition": "100% полиуретан, подкладка 100% полиэстер",
+      "price": 4590,
+      "oldPrice": 5400,
+      "images": [
+        "/photos/p-skirt-leather-1.jpg",
+        "/photos/p-skirt-leather-2.jpg",
+        "/photos/p-skirt-leather-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 3
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 2
+        }
+      ],
+      "isActive": true,
+      "isHit": true,
+      "isNew": false
+    },
+    {
+      "id": "prd_skirt_linen",
+      "categoryId": "skirt",
+      "name": "Юбка из льна",
+      "description": "Умягчённый лён, свободный силуэт и пояс на кулиске. Самая летняя вещь в гардеробе. Рост модели 175 см, на ней размер M.",
+      "composition": "55% лён, 45% вискоза",
+      "price": 3890,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-skirt-linen-1.jpg",
+        "/photos/p-skirt-linen-2.jpg",
+        "/photos/p-skirt-linen-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 1
+        },
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_skirt_wrap",
+      "categoryId": "skirt",
+      "name": "Юбка на запах",
+      "description": "Запах с завязками, который регулируется под фигуру, и мягкая струящаяся ткань. Длина миди. Рост модели 176 см, на ней размер M.",
+      "composition": "100% вискоза",
+      "price": 4190,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-skirt-wrap-1.jpg",
+        "/photos/p-skirt-wrap-2.jpg",
+        "/photos/p-skirt-wrap-3.jpg",
+        "/photos/p-skirt-wrap-4.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_skirt_pencil",
+      "categoryId": "skirt",
+      "name": "Юбка-карандаш",
+      "description": "Строгий силуэт по фигуре, плотная костюмная ткань и разрез сзади для свободного шага. Рост модели 175 см, на ней размер S.",
+      "composition": "68% полиэстер, 28% вискоза, 4% эластан",
+      "price": 4490,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-skirt-pencil-1.jpg",
+        "/photos/p-skirt-pencil-2.jpg",
+        "/photos/p-skirt-pencil-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 2
+        },
+        {
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    },
+    {
+      "id": "prd_skirt_tiered",
+      "categoryId": "skirt",
+      "name": "Юбка ярусная",
+      "description": "Три яруса с мягкими сборками и пояс на резинке — лёгкий романтичный силуэт. Ткань не просвечивает. Рост модели 176 см, на ней размер M.",
+      "composition": "100% вискоза",
+      "price": 4690,
+      "oldPrice": null,
+      "images": [
+        "/photos/p-skirt-tiered-1.jpg",
+        "/photos/p-skirt-tiered-2.jpg",
+        "/photos/p-skirt-tiered-3.jpg"
+      ],
+      "variants": [
+        {
+          "size": "XS",
+          "stock": 4
+        },
+        {
+          "size": "S",
+          "stock": 3
+        },
+        {
+          "size": "M",
+          "stock": 2
+        },
+        {
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "isActive": true,
+      "isHit": false,
+      "isNew": false
+    }
+  ],
+  "orders": [],
+  "banners": []
+}
