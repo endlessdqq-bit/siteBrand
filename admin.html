@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Тӑван — админка</title>
+<style>
+:root{--bg:#0d0c0b;--surface:#161412;--surface-2:#1e1b18;--line:#2c2824;--fg:#e9e3d8;--muted:#9a9187;--accent:#8a3a37;--accent-soft:#b9655f;--ok:#7fa36b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 120px}
+header{position:sticky;top:0;z-index:5;background:rgba(13,12,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .in{max-width:760px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:10px}
+header b{font-size:17px;letter-spacing:.02em}
+header .sp{flex:1}
+header a{color:var(--muted);font-size:13px}
+h2{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:28px 0 12px}
+.btn{background:none;border:1px solid var(--line);border-radius:3px;padding:9px 14px;cursor:pointer;transition:.15s}
+.btn:hover{border-color:var(--muted)}
+.btn.pri{background:var(--fg);color:#141210;border-color:var(--fg);font-weight:600}
+.btn.red{color:var(--accent-soft);border-color:#4a2a28}
+.btn.sm{padding:5px 10px;font-size:12.5px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px}
+label{display:block;font-size:12px;color:var(--muted);margin:12px 0 5px}
+input[type=text],input[type=number],input[type=password],select,textarea{width:100%;background:var(--surface-2);border:1px solid var(--line);border-radius:3px;padding:10px 11px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--muted)}
+textarea{min-height:60px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.note{color:var(--muted);font-size:12.5px}
+ol.steps{padding-left:20px;color:var(--muted);font-size:13px}
+ol.steps li{margin:6px 0}
+ol.steps b{color:var(--fg)}
+/* список товаров */
+.plist{display:flex;flex-direction:column;gap:8px}
+.pi{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:8px;cursor:pointer;transition:.15s}
+.pi:hover{border-color:var(--muted)}
+.pi img{width:54px;height:66px;object-fit:cover;border-radius:2px;background:#000}
+.pi .t{flex:1;min-width:0}
+.pi .t b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pi .t span{color:var(--muted);font-size:12.5px}
+.pi .mv{display:flex;flex-direction:column;gap:4px}
+.pi .mv button{background:none;border:1px solid var(--line);border-radius:2px;width:28px;height:24px;cursor:pointer;color:var(--muted)}
+.pi.hid{opacity:.5}
+/* размеры */
+.sizes{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.szr{display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:3px;padding:6px 8px}
+.szr b{min-width:36px}
+.szr select{padding:5px 6px;font-size:12.5px}
+.szr select.in{color:#a9c79a}.szr select.order{color:var(--accent-soft)}.szr select.off{color:var(--muted)}
+/* фото */
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pslot{background:var(--surface-2);border:1px dashed var(--line);border-radius:3px;padding:8px;text-align:center}
+.pslot img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:2px;background:#000;display:block;margin-bottom:8px}
+.pslot .empty{aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12.5px;margin-bottom:8px}
+.pslot .b{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;max-height:60vh;overflow:auto}
+.gal img{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line);border-radius:2px;cursor:pointer}
+.gal img:hover{border-color:var(--fg)}
+/* нижняя панель */
+.savebar{position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgba(22,20,18,.96);border-top:1px solid var(--line);
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;gap:10px;align-items:center;
+  transform:translateY(110%);transition:transform .3s}
+.savebar.on{transform:none}
+.savebar span{color:var(--muted);font-size:13px}
+.modal{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:16px}
+.modal.on{display:flex}
+.modal .box{width:min(640px,100%);max-height:90vh;overflow:auto}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--surface-2);border:1px solid var(--line);
+  padding:10px 16px;border-radius:3px;opacity:0;transition:.25s;z-index:20;max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.cats .ct{display:flex;gap:8px;margin-bottom:8px}
+.cats .ct input:first-child{max-width:140px}
+.chk{display:flex;align-items:center;gap:8px;margin-top:12px;color:var(--muted);font-size:13px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="in"><b>Тӑван · админка</b><span class="sp"></span><a href="./" target="_blank">Открыть сайт ↗</a></div></header>
+
+<div class="wrap" id="app"></div>
+
+<div class="savebar" id="savebar"><span>Есть несохранённые изменения</span><button class="btn pri" id="saveBtn">Сохранить на сайт</button></div>
+<div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
+<div class="toast" id="toast"></div>
+<input type="file" id="fileIn" accept="image/*" hidden>
+
+<script>
+/* ===================================================================
+   НАСТРОЙКИ: где лежит сайт на GitHub
+=================================================================== */
+const OWNER  = "endlessdqq-bit";
+const REPO   = "sitebrand";
+const BRANCH = "gh-pages";
+const STD_SIZES = ["XS","S","M","L","XL","2XL","3XL","4XL"];
+/* =================================================================== */
+
+const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
+const $ = s => document.querySelector(s);
+const app = $("#app");
+const esc = t => String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let token = ""; try{ token = localStorage.getItem("tavan_gh_token")||""; }catch(e){}
+let DATA = null, SHA = null, dirty = false, editing = null;
+let photoCache = null;
+
+function toast(m,ms=2600){ const t=$("#toast"); t.textContent=m; t.classList.add("on"); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("on"),ms); }
+function setDirty(v=true){ dirty=v; $("#savebar").classList.toggle("on",v); }
+window.addEventListener("beforeunload",e=>{ if(dirty){ e.preventDefault(); e.returnValue=""; } });
+
+/* ---------- GitHub ---------- */
+async function gh(path,opt={}){
+  const r = await fetch(API+path,{...opt,headers:{"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json",...(opt.headers||{})}});
+  if(r.status===401) throw new Error("Ключ не подошёл. Проверь его и войди заново.");
+  if(r.status===403) throw new Error("У ключа нет прав на запись. Создай ключ заново по инструкции.");
+  if(!r.ok && r.status!==404) throw new Error("GitHub ответил ошибкой "+r.status);
+  return r;
+}
+const b64ToText = b => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\n/g,"")),c=>c.charCodeAt(0)));
+function textToB64(t){ const u=new TextEncoder().encode(t); let s=""; for(let i=0;i<u.length;i+=0x8000) s+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000)); return btoa(s); }
+
+async function loadData(){
+  const r = await gh("products.json?ref="+BRANCH+"&t="+Date.now());
+  if(r.status===404) throw new Error("Файл products.json не найден на сайте.");
+  const j = await r.json(); SHA=j.sha; DATA=JSON.parse(b64ToText(j.content));
+  DATA.categories ||= []; DATA.products ||= [];
+}
+async function saveData(){
+  const body={message:"Админка: обновлены товары",content:textToB64(JSON.stringify(DATA,null,2)),sha:SHA,branch:BRANCH};
+  const r = await gh("products.json",{method:"PUT",body:JSON.stringify(body)});
+  if(r.status===409) throw new Error("Файл успели изменить с другого устройства. Обнови страницу.");
+  const j = await r.json(); SHA=j.content.sha;
+}
+async function listPhotos(){
+  if(photoCache) return photoCache;
+  const r = await gh("photos?ref="+BRANCH);
+  photoCache = r.status===404 ? [] : (await r.json()).filter(f=>/\.(jpe?g|png|webp)$/i.test(f.name)).map(f=>"photos/"+f.name);
+  return photoCache;
+}
+function resizeImage(file,max=1400){
+  return new Promise((ok,bad)=>{
+    const img=new Image(); img.onload=()=>{
+      const k=Math.min(1,max/Math.max(img.width,img.height));
+      const c=document.createElement("canvas"); c.width=Math.round(img.width*k); c.height=Math.round(img.height*k);
+      c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+      ok(c.toDataURL("image/jpeg",.86).split(",")[1]); URL.revokeObjectURL(img.src);
+    }; img.onerror=()=>bad(new Error("Не получилось открыть картинку")); img.src=URL.createObjectURL(file);
+  });
+}
+async function uploadPhoto(file){
+  const b64=await resizeImage(file);
+  const name="photos/"+Date.now().toString(36)+".jpg";
+  const r=await gh(name,{method:"PUT",body:JSON.stringify({message:"Админка: новое фото",content:b64,branch:BRANCH})});
+  if(!r.ok) throw new Error("Фото не загрузилось");
+  photoCache && photoCache.unshift(name);
+  return {path:name,preview:"data:image/jpeg;base64,"+b64};
+}
+const previews={}; // свежезагруженные фото показываем сразу, пока сайт обновляется
+const src = p => previews[p] || p;
+
+/* ---------- экран входа ---------- */
+function viewLogin(err){
+  app.innerHTML=`
+    <h2>Вход</h2>
+    <div class="box">
+      ${err?`<p style="color:var(--accent-soft);margin-top:0">${esc(err)}</p>`:""}
+      <label>Ключ доступа GitHub</label>
+      <input type="password" id="tk" placeholder="github_pat_..." autocomplete="off">
+      <p class="note">Ключ вводится один раз и хранится только на этом устройстве.</p>
+      <button class="btn pri" id="go">Войти</button>
+    </div>
+    <h2>Как получить ключ (один раз)</h2>
+    <div class="box"><ol class="steps">
+      <li>Зайди на GitHub под своим аккаунтом <b>${OWNER}</b>.</li>
+      <li>Открой страницу: <b><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" style="color:var(--fg)">github.com/settings/personal-access-tokens/new</a></b></li>
+      <li>В поле <b>Token name</b> напиши: <b>tavan-admin</b>. В <b>Expiration</b> выбери срок, например <b>1 год</b>.</li>
+      <li>В разделе <b>Repository access</b> выбери <b>Only select repositories</b> и отметь <b>${REPO}</b>.</li>
+      <li>В <b>Permissions → Repository permissions</b> найди <b>Contents</b> и поставь <b>Read and write</b>.</li>
+      <li>Нажми внизу <b>Generate token</b>, скопируй ключ и вставь его сюда.</li>
+    </ol></div>`;
+  $("#go").onclick=async()=>{
+    token=$("#tk").value.trim(); if(!token) return;
+    try{ localStorage.setItem("tavan_gh_token",token); }catch(e){}
+    start();
+  };
+}
+
+/* ---------- список ---------- */
+const catName = id => (DATA.categories.find(c=>c.id===id)||{}).name || "без раздела";
+function viewList(){
+  editing=null;
+  app.innerHTML=`
+    <h2>Товары</h2>
+    <div class="plist">${DATA.products.map((p,i)=>`
+      <div class="pi${p.hidden?" hid":""}" data-i="${i}">
+        <img src="${esc(src(p.front))}" alt="">
+        <div class="t"><b>${esc(p.name)||"Без названия"}</b><span>${esc(catName(p.cat))} · ${(+p.price||0).toLocaleString("ru-RU")} ₽${p.hidden?" · скрыт":""}</span></div>
+        <div class="mv"><button data-up="${i}" title="Выше">↑</button><button data-dn="${i}" title="Ниже">↓</button></div>
+      </div>`).join("")}</div>
+    <p><button class="btn" id="add">+ Добавить товар</button></p>
+    <h2>Разделы каталога</h2>
+    <div class="box cats" id="cats">${DATA.categories.map((c,i)=>`
+      <div class="ct"><input type="text" value="${esc(c.id)}" data-ci="${i}" data-f="id" placeholder="код (латиница)"><input type="text" value="${esc(c.name)}" data-ci="${i}" data-f="name" placeholder="Название"><button class="btn sm red" data-cdel="${i}">✕</button></div>`).join("")}
+      <button class="btn sm" id="cadd">+ Раздел</button>
+      <p class="note">Код — короткое слово латиницей (например <b>tee</b>), его не видно покупателям. Название видно на сайте.</p>
+    </div>
+    <p class="note" style="margin-top:24px">После «Сохранить на сайт» изменения появятся на сайте примерно через 1–2 минуты.</p>
+    <p><button class="btn sm" id="logout">Выйти</button></p>`;
+  app.querySelectorAll(".pi").forEach(el=>el.onclick=e=>{ if(e.target.closest(".mv")) return; viewEdit(+el.dataset.i); });
+  app.querySelectorAll("[data-up],[data-dn]").forEach(b=>b.onclick=()=>{
+    const i=+(b.dataset.up??b.dataset.dn), j=b.dataset.up!==undefined?i-1:i+1;
+    if(j<0||j>=DATA.products.length) return;
+    [DATA.products[i],DATA.products[j]]=[DATA.products[j],DATA.products[i]]; setDirty(); viewList();
+  });
+  $("#add").onclick=()=>{
+    DATA.products.push({id:"p"+Date.now().toString(36),name:"",model:"",cat:(DATA.categories[0]||{}).id||"",tag:"",price:0,
+      colors:["Чёрный"],material:"100% хлопок",fit:"",desc:"",front:"",back:"",sizes:["S","M","L","XL"].map(s=>({s,st:"order"}))});
+    setDirty(); viewEdit(DATA.products.length-1);
+  };
+  app.querySelectorAll("[data-ci]").forEach(inp=>inp.oninput=()=>{ DATA.categories[+inp.dataset.ci][inp.dataset.f]=inp.value.trim(); setDirty(); });
+  app.querySelectorAll("[data-cdel]").forEach(b=>b.onclick=()=>{
+    const c=DATA.categories[+b.dataset.cdel];
+    if(DATA.products.some(p=>p.cat===c.id) && !confirm(`В разделе «${c.name}» есть товары. Всё равно удалить раздел?`)) return;
+    DATA.categories.splice(+b.dataset.cdel,1); setDirty(); viewList();
+  });
+  $("#cadd").onclick=()=>{ DATA.categories.push({id:"cat"+(DATA.categories.length+1),name:"Новый раздел"}); setDirty(); viewList(); };
+  $("#logout").onclick=()=>{ try{localStorage.removeItem("tavan_gh_token");}catch(e){} token=""; viewLogin(); };
+}
+
+/* ---------- редактирование товара ---------- */
+function viewEdit(i){
+  editing=i; const p=DATA.products[i];
+  const have=new Map((p.sizes||[]).map(z=>[z.s,z.st]));
+  const extra=(p.sizes||[]).map(z=>z.s).filter(s=>!STD_SIZES.includes(s));
+  const sizeList=[...STD_SIZES,...extra];
+  app.innerHTML=`
+    <p style="margin-top:18px"><button class="btn sm" id="back">← Ко всем товарам</button></p>
+    <h2>${p.name?esc(p.name):"Новый товар"}</h2>
+    <div class="box">
+      <label>Название</label><input type="text" data-k="name" value="${esc(p.name)}" placeholder="Оверсайз футболка «Тӑван»">
+      <div class="row">
+        <div><label>Модель</label><input type="text" data-k="model" value="${esc(p.model)}" placeholder="Мужская модель"></div>
+        <div><label>Цена, ₽</label><input type="number" data-k="price" value="${+p.price||0}" min="0" step="10"></div>
+      </div>
+      <div class="row">
+        <div><label>Раздел</label><select data-k="cat">${DATA.categories.map(c=>`<option value="${esc(c.id)}"${c.id===p.cat?" selected":""}>${esc(c.name)}</option>`).join("")}</select></div>
+        <div><label>Метка на фото (необязательно)</label><input type="text" data-k="tag" value="${esc(p.tag)}" placeholder="Хит, Принт, Новинка"></div>
+      </div>
+      <label>Цвет (если несколько — через запятую)</label><input type="text" id="colors" value="${esc((p.colors||[]).join(", "))}" placeholder="Чёрный">
+      <div class="row">
+        <div><label>Материал</label><input type="text" data-k="material" value="${esc(p.material)}" placeholder="100% хлопок, 240 г/м²"></div>
+        <div><label>Крой</label><input type="text" data-k="fit" value="${esc(p.fit)}" placeholder="Свободный"></div>
+      </div>
+      <label>Короткое описание (необязательно)</label><textarea data-k="desc" placeholder="Например: лого спереди, принт на спине">${esc(p.desc)}</textarea>
+    </div>
+
+    <h2>Размеры и наличие</h2>
+    <div class="box">
+      <div class="sizes">${sizeList.map(s=>{ const st=have.get(s)||"off"; return `
+        <div class="szr"><b>${esc(s)}</b><select data-sz="${esc(s)}" class="${st}">
+          <option value="off"${st==="off"?" selected":""}>— нет</option>
+          <option value="in"${st==="in"?" selected":""}>В наличии</option>
+          <option value="order"${st==="order"?" selected":""}>Под заказ</option>
+        </select></div>`;}).join("")}</div>
+      <p class="note">«— нет» — размер не показывается на сайте. Покупатель нажимает на размер и видит, в наличии он или под заказ.</p>
+    </div>
+
+    <h2>Фото</h2>
+    <div class="photos">
+      ${["front","back"].map(k=>`<div class="pslot">
+        <div class="note" style="margin-bottom:6px">${k==="front"?"Перёд (главное)":"Спина (необязательно)"}</div>
+        ${p[k]?`<img src="${esc(src(p[k]))}" alt="">`:`<div class="empty">Нет фото</div>`}
+        <div class="b"><button class="btn sm" data-up="${k}">Загрузить</button><button class="btn sm" data-pick="${k}">Выбрать</button>${p[k]&&k==="back"?`<button class="btn sm red" data-clr="${k}">Убрать</button>`:""}</div>
+      </div>`).join("")}
+    </div>
+
+    <label class="chk"><input type="checkbox" id="hidden"${p.hidden?" checked":""}> Скрыть товар с сайта (не удаляя)</label>
+    <p style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" id="dup">Сделать копию</button>
+      <button class="btn red" id="del">Удалить товар</button>
+    </p>`;
+
+  $("#back").onclick=viewList;
+  app.querySelectorAll("[data-k]").forEach(el=>el.oninput=()=>{
+    p[el.dataset.k] = el.type==="number" ? (+el.value||0) : el.value.trim(); setDirty();
+  });
+  $("#colors").oninput=e=>{ p.colors=e.target.value.split(",").map(s=>s.trim()).filter(Boolean); setDirty(); };
+  app.querySelectorAll("[data-sz]").forEach(sl=>sl.onchange=()=>{
+    sl.className=sl.value;
+    const order=[...app.querySelectorAll("[data-sz]")].map(x=>({s:x.dataset.sz,st:x.value})).filter(z=>z.st!=="off");
+    p.sizes=order; setDirty();
+  });
+  $("#hidden").onchange=e=>{ p.hidden=e.target.checked||undefined; setDirty(); };
+  app.querySelectorAll("[data-clr]").forEach(b=>b.onclick=()=>{ p[b.dataset.clr]=""; setDirty(); viewEdit(i); });
+  app.querySelectorAll("[data-up]").forEach(b=>b.onclick=()=>{
+    const fi=$("#fileIn"); fi.value="";
+    fi.onchange=async()=>{
+      const f=fi.files[0]; if(!f) return;
+      b.disabled=true; b.textContent="Загружаю…";
+      try{ const r=await uploadPhoto(f); previews[r.path]=r.preview; p[b.dataset.up]=r.path; setDirty(); toast("Фото загружено"); viewEdit(i); }
+      catch(e){ toast(e.message); b.disabled=false; b.textContent="Загрузить"; }
+    };
+    fi.click();
+  });
+  app.querySelectorAll("[data-pick]").forEach(b=>b.onclick=async()=>{
+    const k=b.dataset.pick;
+    $("#modalBox").innerHTML=`<p class="note">Загружаю фото…</p>`; $("#modal").classList.add("on");
+    try{
+      const list=await listPhotos();
+      $("#modalBox").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><b>Выбери фото</b><button class="btn sm" id="mclose">Закрыть</button></div>
+        <div class="gal">${list.map(f=>`<img src="${esc(src(f))}" data-f="${esc(f)}" loading="lazy">`).join("")||`<p class="note">Пока нет фото — нажми «Загрузить».</p>`}</div>`;
+      $("#mclose").onclick=()=>$("#modal").classList.remove("on");
+      $("#modalBox").querySelectorAll("[data-f]").forEach(im=>im.onclick=()=>{ p[k]=im.dataset.f; setDirty(); $("#modal").classList.remove("on"); viewEdit(i); });
+    }catch(e){ $("#modal").classList.remove("on"); toast(e.message); }
+  });
+  $("#dup").onclick=()=>{ const c=JSON.parse(JSON.stringify(p)); c.id="p"+Date.now().toString(36); c.name=(p.name||"")+" (копия)"; DATA.products.splice(i+1,0,c); setDirty(); viewEdit(i+1); toast("Копия создана"); };
+  $("#del").onclick=()=>{ if(!confirm(`Удалить «${p.name||"товар"}»?`)) return; DATA.products.splice(i,1); setDirty(); viewList(); };
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+$("#modal").onclick=e=>{ if(e.target.id==="modal") $("#modal").classList.remove("on"); };
+
+/* ---------- сохранение ---------- */
+$("#saveBtn").onclick=async()=>{
+  const bad=DATA.products.find(p=>!p.name||!p.front||!(p.sizes||[]).length);
+  if(bad && !bad.hidden){ toast(`У товара «${bad.name||"без названия"}» не хватает названия, фото или размеров`,3500); return; }
+  const btn=$("#saveBtn"); btn.disabled=true; btn.textContent="Сохраняю…";
+  try{ await saveData(); setDirty(false); toast("Сохранено ✓ Сайт обновится через 1–2 минуты",4000); }
+  catch(e){ toast(e.message,4000); }
+  btn.disabled=false; btn.textContent="Сохранить на сайт";
+};
+
+async function start(){
+  if(!token) return viewLogin();
+  app.innerHTML=`<p class="note" style="margin-top:30px">Загружаю товары…</p>`;
+  try{ await loadData(); viewList(); }
+  catch(e){ viewLogin(e.message); }
+}
+start();
+</script>
+</body>
+</html>

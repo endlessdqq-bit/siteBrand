@@ -1,0 +1,255 @@
+{
+  "categories": [
+    {
+      "id": "tee",
+      "name": "Футболки"
+    },
+    {
+      "id": "oversize",
+      "name": "Оверсайз"
+    },
+    {
+      "id": "hoodie",
+      "name": "Худи"
+    },
+    {
+      "id": "long",
+      "name": "Лонгсливы"
+    }
+  ],
+  "products": [
+    {
+      "id": "tavan-oversize",
+      "name": "Оверсайз футболка «Тӑван»",
+      "model": "Мужская модель",
+      "cat": "tee",
+      "tag": "Принт",
+      "price": 2990,
+      "colors": [
+        "Чёрный"
+      ],
+      "material": "100% хлопок, 240 г/м²",
+      "fit": "Свободный",
+      "desc": "",
+      "front": "photos/p_base.jpg",
+      "back": "photos/p_backart.jpg",
+      "sizes": [
+        {
+          "s": "S",
+          "st": "order"
+        },
+        {
+          "s": "M",
+          "st": "order"
+        },
+        {
+          "s": "L",
+          "st": "order"
+        },
+        {
+          "s": "XL",
+          "st": "order"
+        },
+        {
+          "s": "2XL",
+          "st": "order"
+        },
+        {
+          "s": "3XL",
+          "st": "order"
+        }
+      ]
+    },
+    {
+      "id": "tavan-base",
+      "name": "Тӑван · базовая",
+      "model": "",
+      "cat": "tee",
+      "tag": "Хит",
+      "price": 2490,
+      "colors": [
+        "Чёрный"
+      ],
+      "material": "100% хлопок, 190 г/м²",
+      "fit": "Классический",
+      "desc": "Логотип спереди, чистая спина",
+      "front": "photos/p_close2.jpg",
+      "back": "",
+      "sizes": [
+        {
+          "s": "XS",
+          "st": "order"
+        },
+        {
+          "s": "S",
+          "st": "order"
+        },
+        {
+          "s": "M",
+          "st": "order"
+        },
+        {
+          "s": "L",
+          "st": "order"
+        },
+        {
+          "s": "XL",
+          "st": "order"
+        },
+        {
+          "s": "2XL",
+          "st": "order"
+        }
+      ]
+    },
+    {
+      "id": "secpel",
+      "name": "Çеçпĕл · оверсайз",
+      "model": "",
+      "cat": "oversize",
+      "tag": "Принт",
+      "price": 3290,
+      "colors": [
+        "Чёрный"
+      ],
+      "material": "100% хлопок, 240 г/м²",
+      "fit": "Свободный",
+      "desc": "Лого спереди, живописный принт на спине",
+      "front": "photos/p_front_m.jpg",
+      "back": "photos/art2.jpg",
+      "sizes": [
+        {
+          "s": "S",
+          "st": "order"
+        },
+        {
+          "s": "M",
+          "st": "order"
+        },
+        {
+          "s": "L",
+          "st": "order"
+        },
+        {
+          "s": "XL",
+          "st": "order"
+        },
+        {
+          "s": "2XL",
+          "st": "order"
+        }
+      ]
+    },
+    {
+      "id": "tavan-women",
+      "name": "Тӑван · женская",
+      "model": "Женская модель",
+      "cat": "tee",
+      "tag": "",
+      "price": 2690,
+      "colors": [
+        "Чёрный"
+      ],
+      "material": "100% хлопок, 190 г/м²",
+      "fit": "Полуприталенный",
+      "desc": "Лого спереди, арт-принт на спине",
+      "front": "photos/p_sit.jpg",
+      "back": "photos/p_back.jpg",
+      "sizes": [
+        {
+          "s": "XS",
+          "st": "order"
+        },
+        {
+          "s": "S",
+          "st": "order"
+        },
+        {
+          "s": "M",
+          "st": "order"
+        },
+        {
+          "s": "L",
+          "st": "order"
+        },
+        {
+          "s": "XL",
+          "st": "order"
+        }
+      ]
+    },
+    {
+      "id": "tavan-hoodie",
+      "name": "Тӑван · худи",
+      "model": "",
+      "cat": "hoodie",
+      "tag": "",
+      "price": 4990,
+      "colors": [
+        "Чёрный",
+        "Графит"
+      ],
+      "material": "100% хлопок, футер 320 г/м²",
+      "fit": "Свободный",
+      "desc": "Тёплое худи с вышитым знаком-древом",
+      "front": "photos/p_close.jpg",
+      "back": "",
+      "sizes": [
+        {
+          "s": "S",
+          "st": "order"
+        },
+        {
+          "s": "M",
+          "st": "order"
+        },
+        {
+          "s": "L",
+          "st": "order"
+        },
+        {
+          "s": "XL",
+          "st": "order"
+        },
+        {
+          "s": "2XL",
+          "st": "order"
+        }
+      ]
+    },
+    {
+      "id": "hunav-long",
+      "name": "Хунав · лонгслив",
+      "model": "",
+      "cat": "long",
+      "tag": "",
+      "price": 2990,
+      "colors": [
+        "Чёрный"
+      ],
+      "material": "100% хлопок, 210 г/м²",
+      "fit": "Прямой",
+      "desc": "Лонгслив с минималистичным лого",
+      "front": "photos/p_close2.jpg",
+      "back": "",
+      "sizes": [
+        {
+          "s": "S",
+          "st": "order"
+        },
+        {
+          "s": "M",
+          "st": "order"
+        },
+        {
+          "s": "L",
+          "st": "order"
+        },
+        {
+          "s": "XL",
+          "st": "order"
+        }
+      ]
+    }
+  ]
+}
