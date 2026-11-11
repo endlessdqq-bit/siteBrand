@@ -158,15 +158,70 @@ async function uploadPhoto(file){
 const previews={}; // свежезагруженные фото показываем сразу, пока сайт обновляется
 const src = p => previews[p] || p;
 
+/* ---------- пароль: ключ GitHub хранится зашифрованным в admin-lock.json ---------- */
+const LOCK_FILE="admin-lock.json", ITER=600000;
+const u8b64 = u => { let s=""; u.forEach(c=>s+=String.fromCharCode(c)); return btoa(s); };
+const b64u8 = b => Uint8Array.from(atob(b),c=>c.charCodeAt(0));
+async function keyFrom(pass,salt,iter){
+  const base=await crypto.subtle.importKey("raw",new TextEncoder().encode(pass),"PBKDF2",false,["deriveKey"]);
+  return crypto.subtle.deriveKey({name:"PBKDF2",salt,iterations:iter,hash:"SHA-256"},base,{name:"AES-GCM",length:256},false,["encrypt","decrypt"]);
+}
+async function lockToken(pass,tk){
+  const salt=crypto.getRandomValues(new Uint8Array(16)), iv=crypto.getRandomValues(new Uint8Array(12));
+  const k=await keyFrom(pass,salt,ITER);
+  const data=new Uint8Array(await crypto.subtle.encrypt({name:"AES-GCM",iv},k,new TextEncoder().encode(tk)));
+  return {v:1,iter:ITER,salt:u8b64(salt),iv:u8b64(iv),data:u8b64(data)};
+}
+async function unlockToken(pass,lock){
+  const k=await keyFrom(pass,b64u8(lock.salt),lock.iter);
+  try{ return new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:b64u8(lock.iv)},k,b64u8(lock.data))); }
+  catch(e){ throw new Error("Неверный пароль"); }
+}
+async function getLock(){
+  try{ const r=await fetch(LOCK_FILE+"?t="+Date.now(),{cache:"no-store"}); return r.ok? await r.json() : null; }catch(e){ return null; }
+}
+async function saveLock(pass){
+  const lock=await lockToken(pass,token);
+  const old=await gh(LOCK_FILE+"?ref="+BRANCH+"&t="+Date.now());
+  const body={message:"Админка: пароль для входа",content:textToB64(JSON.stringify(lock)),branch:BRANCH};
+  if(old.ok) body.sha=(await old.json()).sha;
+  const r=await gh(LOCK_FILE,{method:"PUT",body:JSON.stringify(body)});
+  if(!r.ok) throw new Error("Не удалось сохранить пароль");
+}
+function remember(tk){ try{ localStorage.setItem("tavan_gh_token",tk); }catch(e){} }
+
 /* ---------- экран входа ---------- */
-function viewLogin(err){
+async function viewLogin(err,mode){
+  const lock = mode==="key" ? null : await getLock();
+  if(lock){
+    app.innerHTML=`
+      <h2>Вход</h2>
+      <div class="box">
+        ${err?`<p style="color:var(--accent-soft);margin-top:0">${esc(err)}</p>`:""}
+        <label>Пароль</label>
+        <input type="password" id="pw" autocomplete="current-password">
+        <label class="chk"><input type="checkbox" id="rem" checked> Запомнить на этом устройстве</label>
+        <p><button class="btn pri" id="go">Войти</button></p>
+        <p class="note">Забыл пароль? <a href="#" id="bykey" style="color:var(--fg)">Войти по ключу GitHub</a> и задать новый.</p>
+      </div>`;
+    const go=async()=>{
+      const pw=$("#pw").value; if(!pw) return;
+      $("#go").disabled=true; $("#go").textContent="Проверяю…";
+      try{ token=await unlockToken(pw,lock); if($("#rem").checked) remember(token); start(); }
+      catch(e){ viewLogin(e.message); }
+    };
+    $("#go").onclick=go; $("#pw").onkeydown=e=>{ if(e.key==="Enter") go(); };
+    $("#bykey").onclick=e=>{ e.preventDefault(); viewLogin("","key"); };
+    setTimeout(()=>$("#pw").focus(),50);
+    return;
+  }
   app.innerHTML=`
     <h2>Вход</h2>
     <div class="box">
       ${err?`<p style="color:var(--accent-soft);margin-top:0">${esc(err)}</p>`:""}
       <label>Ключ доступа GitHub</label>
       <input type="password" id="tk" placeholder="github_pat_..." autocomplete="off">
-      <p class="note">Ключ вводится один раз и хранится только на этом устройстве.</p>
+      <p class="note">После входа можно задать пароль — тогда ключ больше не понадобится.</p>
       <button class="btn pri" id="go">Войти</button>
     </div>
     <h2>Как получить ключ (один раз)</h2>
@@ -178,10 +233,28 @@ function viewLogin(err){
       <li>В <b>Permissions → Repository permissions</b> найди <b>Contents</b> и поставь <b>Read and write</b>.</li>
       <li>Нажми внизу <b>Generate token</b>, скопируй ключ и вставь его сюда.</li>
     </ol></div>`;
-  $("#go").onclick=async()=>{
-    token=$("#tk").value.trim(); if(!token) return;
-    try{ localStorage.setItem("tavan_gh_token",token); }catch(e){}
-    start();
+  $("#go").onclick=()=>{ token=$("#tk").value.trim(); if(!token) return; remember(token); start(); };
+}
+
+/* ---------- окно «Пароль для входа» ---------- */
+async function viewPassword(){
+  const has=!!(await getLock());
+  $("#modalBox").innerHTML=`
+    <b>${has?"Сменить пароль":"Установить пароль"}</b>
+    <p class="note">Пароль заменит ключ GitHub при входе — на любом телефоне или компьютере. Минимум 10 символов: буквы и цифры. Придумай такой, который не используешь больше нигде.</p>
+    <label>Новый пароль</label><input type="password" id="np1" autocomplete="new-password">
+    <label>Повтори пароль</label><input type="password" id="np2" autocomplete="new-password">
+    <p style="display:flex;gap:10px;margin-top:16px"><button class="btn pri" id="npSave">Сохранить пароль</button><button class="btn" id="npCancel">Отмена</button></p>`;
+  $("#modal").classList.add("on");
+  $("#npCancel").onclick=()=>$("#modal").classList.remove("on");
+  $("#npSave").onclick=async()=>{
+    const a=$("#np1").value, b=$("#np2").value;
+    if(a.length<10) return toast("Пароль должен быть не короче 10 символов");
+    if(!/[a-zа-яё]/i.test(a)||!/\d/.test(a)) return toast("Добавь в пароль и буквы, и цифры");
+    if(a!==b) return toast("Пароли не совпадают");
+    const btn=$("#npSave"); btn.disabled=true; btn.textContent="Сохраняю…";
+    try{ await saveLock(a); $("#modal").classList.remove("on"); toast("Пароль установлен ✓ Заработает через 1–2 минуты",4000); }
+    catch(e){ toast(e.message,4000); btn.disabled=false; btn.textContent="Сохранить пароль"; }
   };
 }
 
@@ -205,7 +278,7 @@ function viewList(){
       <p class="note">Код — короткое слово латиницей (например <b>tee</b>), его не видно покупателям. Название видно на сайте.</p>
     </div>
     <p class="note" style="margin-top:24px">После «Сохранить на сайт» изменения появятся на сайте примерно через 1–2 минуты.</p>
-    <p><button class="btn sm" id="logout">Выйти</button></p>`;
+    <p style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn sm" id="pwBtn">🔒 Пароль для входа</button><button class="btn sm" id="logout">Выйти</button></p>`;
   app.querySelectorAll(".pi").forEach(el=>el.onclick=e=>{ if(e.target.closest(".mv")) return; viewEdit(+el.dataset.i); });
   app.querySelectorAll("[data-up],[data-dn]").forEach(b=>b.onclick=()=>{
     const i=+(b.dataset.up??b.dataset.dn), j=b.dataset.up!==undefined?i-1:i+1;
@@ -224,6 +297,7 @@ function viewList(){
     DATA.categories.splice(+b.dataset.cdel,1); setDirty(); viewList();
   });
   $("#cadd").onclick=()=>{ DATA.categories.push({id:"cat"+(DATA.categories.length+1),name:"Новый раздел"}); setDirty(); viewList(); };
+  $("#pwBtn").onclick=viewPassword;
   $("#logout").onclick=()=>{ try{localStorage.removeItem("tavan_gh_token");}catch(e){} token=""; viewLogin(); };
 }
 
