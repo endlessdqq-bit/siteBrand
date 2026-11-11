@@ -262,6 +262,16 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-block:40px 48px;
 .foot-grid{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
 footer .wordmark{color:var(--fg)}
 .foot-links{display:flex;gap:26px;flex-wrap:wrap}
+.socs{display:inline-flex;gap:6px;align-items:center}
+.nav a.soc{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%;color:var(--muted);transition:.2s}
+.nav a.soc:hover{color:var(--fg);border-color:var(--muted);transform:translateY(-1px)}
+.soc svg,.foot-soc svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.foot-soc{display:flex;flex-direction:column;gap:12px;min-width:210px}
+.foot-soc a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg);transition:.2s}
+.foot-soc a svg{width:20px;height:20px;padding:9px;box-sizing:content-box;border:1px solid var(--line);border-radius:50%;color:var(--accent-soft);transition:.2s}
+.foot-soc a:hover svg{border-color:var(--accent-soft);background:rgba(138,58,55,.12)}
+.foot-soc a span{display:flex;flex-direction:column;font-size:14px;line-height:1.3}
+.foot-soc a small{color:var(--muted);font-size:12px}
 .foot-links a{text-decoration:none;color:var(--muted);transition:.2s}
 .foot-links a:hover{color:var(--fg)}
 
@@ -389,13 +399,16 @@ button.btn-primary{background:var(--fg)}
 <header>
   <div class="wrap hbar">
     <a class="brand" href="#top" aria-label="Тӑван.wear">
-      <svg class="mark" viewBox="0 0 100 110"><use href="#tree"/></svg>
       <span class="wordmark">Тӑван<small>носи своё</small></span>
     </a>
     <nav class="nav">
       <a href="#catalog">Каталог</a>
       <a href="#about">О бренде</a>
       <a href="#founder">Видео</a>
+      <span class="socs">
+        <a class="soc" href="https://www.instagram.com/tavan.wear/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a>
+        <a class="soc" href="https://t.me/tavanweargr" target="_blank" rel="noopener" aria-label="Telegram-канал" title="Telegram-канал"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l6 2.5M21 4l-3 16-9-6.5M21 4 9 13.5V19l3-3.5"/></svg></a>
+      </span>
       <button class="cart-btn" id="openCart" aria-label="Корзина">
         Корзина<span class="cart-count" id="cartCount">0</span>
       </button>
@@ -477,7 +490,6 @@ button.btn-primary{background:var(--fg)}
   <div class="wrap foot-grid">
     <div style="display:flex;flex-direction:column;gap:12px">
       <a class="brand" href="#top" style="text-decoration:none">
-        <svg class="mark" viewBox="0 0 100 110" style="width:28px;height:31px"><use href="#tree"/></svg>
         <span class="wordmark">Тӑван<small>носи своё</small></span>
       </a>
       <span style="max-width:34ch">Чувашский бренд одежды. Носи своё — носи родное.</span>
@@ -486,8 +498,13 @@ button.btn-primary{background:var(--fg)}
       <a href="#catalog">Каталог</a>
       <a href="#about">О бренде</a>
       <a href="#founder">Слово основателя</a>
-      <a id="igLink" href="https://instagram.com/tavan.wear" target="_blank" rel="noopener">Instagram</a>
       <a href="#catalog">Доставка и оплата</a>
+    </div>
+    <div class="foot-soc">
+      <span class="eyebrow">Мы на связи</span>
+      <a href="https://www.instagram.com/tavan.wear/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg><span>Instagram<small>@tavan.wear</small></span></a>
+      <a href="https://t.me/tavanweargr" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l6 2.5M21 4l-3 16-9-6.5M21 4 9 13.5V19l3-3.5"/></svg><span>Telegram-канал<small>t.me/tavanweargr</small></span></a>
+      <a href="https://t.me/tavanwearchat" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span>Чат поддержки<small>@tavanwearchat</small></span></a>
     </div>
   </div>
 </footer>
@@ -523,7 +540,7 @@ button.btn-primary{background:var(--fg)}
 =================================================================== */
 const TG_BOT_TOKEN   = "";                 // напр. "7712345678:AAF..."
 const TG_CHAT_ID     = "";                 // напр. "123456789"
-const MANAGER_TG      = "tavan_manager";   // @username менеджера для ручной ссылки
+const MANAGER_TG      = "tavanwearchat";   // @username менеджера для ручной ссылки
 /* =================================================================== */
 
 /* ===================================================================
