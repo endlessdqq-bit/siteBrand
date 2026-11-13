@@ -841,7 +841,7 @@ async function submitOrder(){
       const r=await fetch("/api/order",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({...d,consent:true,items:cart.map(i=>({id:i.id,size:i.size,color:i.color,qty:i.qty}))})});
       const j=await r.json().catch(()=>({}));
-      if(r.ok && j.ok) return renderDone(`Заказ №${j.number}\n\n`+text,true,j.number);
+      if(r.ok && j.ok) return renderDone(`Заказ №${j.number}\n\n`+text,!!j.sent,j.number);
       if(j.error){ toast(j.error); btn.disabled=false; btn.textContent="Отправить заявку"; return; }
     }catch(e){}
   }
@@ -851,14 +851,14 @@ async function submitOrder(){
 }
 
 function renderDone(text,sent,number){
-  view="done"; title.textContent=sent?(number?`Заявка №${number} отправлена`:"Заявка отправлена"):"Заявка готова";
+  view="done"; title.textContent=number?`Заявка №${number} принята`:(sent?"Заявка отправлена":"Заявка готова");
   const tgShare="https://t.me/"+MANAGER_TG;
   body.innerHTML=`
     <div class="confirm">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none"><polyline points="4,12 10,18 20,6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <h3>${sent?"Спасибо! Заказ у менеджера":"Заказ собран"}</h3>
+      <h3>${sent?"Спасибо! Заказ у менеджера":(number?"Спасибо! Заказ принят":"Заказ собран")}</h3>
       <p style="color:var(--muted);margin:0;max-width:40ch">
-        ${sent?"Менеджер свяжется с вами в ближайшее время для подтверждения.":"Скопируйте заявку и отправьте менеджеру в Telegram — он подтвердит заказ и оформит доставку."}</p>
+        ${sent?"Менеджер свяжется с вами в ближайшее время для подтверждения.":(number?"Мы получили заказ и скоро свяжемся с вами. Чтобы ускорить — напишите менеджеру в Telegram и назовите номер заказа.":"Скопируйте заявку и отправьте менеджеру в Telegram — он подтвердит заказ и оформит доставку.")}</p>
       <div class="ordertext" id="otext">${text.replace(/</g,"&lt;")}</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
         <button class="copy-btn" id="copyBtn">Скопировать заявку</button>
