@@ -25,11 +25,12 @@ say(){ printf '\n\033[1;32m==> %s\033[0m\n' "$*"; }
 export DEBIAN_FRONTEND=noninteractive
 
 say "Обновляю систему и ставлю программы (пара минут)…"
-apt-get update -y -q
-apt-get upgrade -y -q
-apt-get install -y -q nginx git curl ufw certbot python3-certbot-nginx nodejs unattended-upgrades
+APT="apt-get -o DPkg::Lock::Timeout=600 -y -q"
+$APT update
+$APT upgrade
+$APT install nginx git curl ufw certbot python3-certbot-nginx nodejs unattended-upgrades
 node -e 'process.exit(+process.versions.node.split(".")[0] >= 18 ? 0 : 1)' \
-  || { say "Ставлю свежий Node.js"; curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt-get install -y -q nodejs; }
+  || { say "Ставлю свежий Node.js"; curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && $APT install nodejs; }
 
 say "Включаю автоматические обновления безопасности"
 dpkg-reconfigure -f noninteractive unattended-upgrades || true
