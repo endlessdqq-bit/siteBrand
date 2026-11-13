@@ -8,7 +8,9 @@
 #  Можно указать чат вручную:  bash telegram.sh ТОКЕН ID_ЧАТА
 # ===================================================================
 set -euo pipefail
-TOKEN="${1:-}"; CHAT="${2:-}"
+TOKEN="${1:-}"; shift || true
+# номер чата: берём из остальных слов только число (на случай «Id: 123456789»)
+CHAT="$(printf '%s ' "$@" | grep -oE -- '-?[0-9]{5,}' | head -1 || true)"
 [ -n "$TOKEN" ] || { echo "Пример: bash /var/www/tavan/server/telegram.sh 7712345678:AAF..."; exit 1; }
 
 if ! curl -sf "https://api.telegram.org/bot$TOKEN/getMe" >/dev/null; then
