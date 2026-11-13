@@ -196,6 +196,10 @@ section[id],#about{scroll-margin-top:72px}
 .opt-val{font-size:13px}
 .cl{background:none;border:1px solid var(--line);color:var(--fg);border-radius:2px;padding:5px 10px;font-size:12.5px;transition:.15s}
 .cl.sel{background:var(--fg);color:#141210;border-color:var(--fg)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:var(--muted);margin:4px 0 2px;cursor:pointer;line-height:1.45}
+.consent input{margin-top:2px;accent-color:var(--accent);width:16px;height:16px;flex:0 0 auto}
+.consent a{color:var(--fg)}
+.consent.invalid span{color:var(--accent-soft)}
 .grid-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
 .sz.sel{background:var(--fg);color:#141210;border-color:var(--fg)}
 .sw{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);padding:0;position:relative;transition:transform .15s}
@@ -530,16 +534,10 @@ button.btn-primary{background:var(--fg)}
 
 <script>
 /* ===================================================================
-   НАСТРОЙКА ЗАЯВОК В TELEGRAM  (заполнить при запуске реального сайта)
-   -------------------------------------------------------------------
-   1) В Telegram напиши боту @BotFather → /newbot → получишь ТОКЕН.
-   2) Узнай свой CHAT_ID: напиши боту @userinfobot — он пришлёт число.
-   3) Впиши значения ниже. Пока поля пустые — заказ показывается текстом
-      с кнопкой «Скопировать» и ссылкой на Telegram менеджера.
-   В режиме Telegram mini-app заявка уходит боту автоматически (sendData).
+   ЗАЯВКИ: на своём сервере уходят в /api/order (сохраняются на сервере
+   и пересылаются менеджеру в Telegram; токен бота хранится только на
+   сервере — команда tavan-telegram). На GitHub Pages — показ текстом.
 =================================================================== */
-const TG_BOT_TOKEN   = "";                 // напр. "7712345678:AAF..."
-const TG_CHAT_ID     = "";                 // напр. "123456789"
 const MANAGER_TG      = "tavanwearchat";   // @username менеджера для ручной ссылки
 /* =================================================================== */
 
@@ -790,6 +788,7 @@ function renderCheckout(){
         <option>Самовывоз</option>
       </select></div>
     <div class="field" id="f-comment"><label>Комментарий</label><textarea id="in-comment" placeholder="Пожелания к заказу (необязательно)"></textarea></div>
+    <label class="consent" id="f-consent"><input type="checkbox" id="in-consent"><span>Даю <a href="privacy.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a></span></label>
     <div class="summary" id="sum"></div>
     <button class="checkout" id="submitOrder">Отправить заявку</button>`;
   // summary
@@ -819,8 +818,11 @@ async function submitOrder(){
     city:g("in-city").value.trim(), delivery:g("in-delivery").value, comment:g("in-comment").value.trim() };
   let ok=true;
   const mark=(fid,bad)=>{ document.getElementById(fid).classList.toggle("invalid",bad); if(bad)ok=false; };
-  mark("f-name",!d.name); mark("f-phone",!d.phone);
+  mark("f-name",!d.name); mark("f-phone",(d.phone.match(/\d/g)||[]).length<10);
   if(!ok){ toast("Заполните имя и телефон"); return; }
+  const consent=g("in-consent").checked;
+  g("f-consent").classList.toggle("invalid",!consent);
+  if(!consent){ toast("Отметьте согласие на обработку данных"); return; }
 
   const text=buildOrderText(d);
   const btn=g("submitOrder"); btn.disabled=true; btn.textContent="Отправляем…";
@@ -833,14 +835,14 @@ async function submitOrder(){
     }
   }catch(e){}
 
-  // 2) Бот настроен — отправляем через Bot API (работает на реальном сайте)
-  if(TG_BOT_TOKEN && TG_CHAT_ID){
+  // 2) Свой сервер — заявка сохраняется на сервере в РФ и уходит менеджеру
+  if(!/github\.io$/.test(location.hostname) && location.protocol!=="file:"){
     try{
-      const r=await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`,{
-        method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({chat_id:TG_CHAT_ID,text})
-      });
-      if(r.ok) return renderDone(text,true);
+      const r=await fetch("/api/order",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({...d,consent:true,items:cart.map(i=>({id:i.id,size:i.size,color:i.color,qty:i.qty}))})});
+      const j=await r.json().catch(()=>({}));
+      if(r.ok && j.ok) return renderDone(`Заказ №${j.number}\n\n`+text,true,j.number);
+      if(j.error){ toast(j.error); btn.disabled=false; btn.textContent="Отправить заявку"; return; }
     }catch(e){}
   }
 
@@ -848,8 +850,8 @@ async function submitOrder(){
   renderDone(text,false);
 }
 
-function renderDone(text,sent){
-  view="done"; title.textContent=sent?"Заявка отправлена":"Заявка готова";
+function renderDone(text,sent,number){
+  view="done"; title.textContent=sent?(number?`Заявка №${number} отправлена`:"Заявка отправлена"):"Заявка готова";
   const tgShare="https://t.me/"+MANAGER_TG;
   body.innerHTML=`
     <div class="confirm">
@@ -862,7 +864,7 @@ function renderDone(text,sent){
         <button class="copy-btn" id="copyBtn">Скопировать заявку</button>
         <a class="tg-link" href="${tgShare}" target="_blank" rel="noopener">Написать менеджеру</a>
       </div>
-      ${sent?``:`<div class="note">Это демо-режим: заявка показана текстом. Когда подключим Telegram-бота (поле в коде сайта), такие заявки будут улетать менеджеру автоматически — клиенту ничего копировать не нужно.</div>`}
+
       <button class="copy-btn" id="newOrder" style="margin-top:4px">Вернуться в каталог</button>
     </div>`;
   foot.hidden=true;
