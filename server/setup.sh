@@ -25,7 +25,8 @@ say(){ printf '\n\033[1;32m==> %s\033[0m\n' "$*"; }
 export DEBIAN_FRONTEND=noninteractive
 
 say "Обновляю систему и ставлю программы (пара минут)…"
-APT="apt-get -o DPkg::Lock::Timeout=600 -y -q"
+APT="apt-get -o DPkg::Lock::Timeout=600 -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold -y -q"
+export HOME=${HOME:-/root}
 $APT update
 $APT upgrade
 $APT install nginx git curl ufw certbot python3-certbot-nginx nodejs unattended-upgrades
