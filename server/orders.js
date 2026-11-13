@@ -49,15 +49,16 @@ function loadCatalog() {
 }
 
 async function sendTelegram(text) {
-  if (!BOT_TOKEN || !CHAT_ID) return false;
+  if (!BOT_TOKEN || !CHAT_ID) { console.error("Бот не настроен: нет токена или чата в /etc/tavan.env"); return false; }
   try {
     const r = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chat_id: CHAT_ID, text }),
       signal: AbortSignal.timeout(10000)
     });
+    if (!r.ok) console.error("Telegram не принял сообщение:", r.status, (await r.text()).slice(0, 200));
     return r.ok;
-  } catch (e) { return false; }
+  } catch (e) { console.error("Нет связи с Telegram:", e.cause?.code || e.message); return false; }
 }
 
 function send(res, code, obj) {
@@ -110,6 +111,7 @@ async function handleOrder(req, res) {
   t += `\nИтого: ${RUB(total)}`;
 
   const sent = await sendTelegram(t);
+  console.log(`Заказ №${number}: сохранён, Telegram: ${sent ? "отправлен" : "НЕ отправлен"}`);
   send(res, 200, { ok: true, number, total, sent });
 }
 
