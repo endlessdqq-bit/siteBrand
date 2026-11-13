@@ -13,9 +13,18 @@ TOKEN="${1:-}"; shift || true
 CHAT="$(printf '%s ' "$@" | grep -oE -- '-?[0-9]{5,}' | head -1 || true)"
 [ -n "$TOKEN" ] || { echo "Пример: bash /var/www/tavan/server/telegram.sh 7712345678:AAF..."; exit 1; }
 
-if ! curl -sf "https://api.telegram.org/bot$TOKEN/getMe" >/dev/null; then
-  echo "❌ Токен не подошёл. Скопируй его из @BotFather ещё раз целиком."; exit 1
+TOKEN="$(printf '%s' "$TOKEN" | tr -d '[:space:]"'"'"'')"
+if ! printf '%s' "$TOKEN" | grep -qE '^[0-9]{6,}:[A-Za-z0-9_-]{30,}$'; then
+  echo "❌ Это не похоже на токен. Он выглядит так: 1234567890:AAF… (цифры, двоеточие, буквы). Скопируй его из @BotFather целиком."; exit 1
 fi
+CODE=$(curl -s -m 15 -o /tmp/tg_me.json -w '%{http_code}' "https://api.telegram.org/bot$TOKEN/getMe" || echo 000)
+case "$CODE" in
+  200) echo "Бот найден: @$(grep -oE '"username":"[^"]+"' /tmp/tg_me.json | cut -d'"' -f4)";;
+  401|404) echo "❌ Telegram говорит: токен неверный или устарел. Возьми САМЫЙ ПОСЛЕДНИЙ токен в @BotFather (/mybots → бот → API Token)."; exit 1;;
+  000) echo "❌ Сервер не может связаться с Telegram (нет соединения). Напиши Claude: «сервер не видит Telegram»."; exit 1;;
+  *) echo "❌ Telegram ответил кодом $CODE. Напиши Claude этот код."; exit 1;;
+esac
+rm -f /tmp/tg_me.json
 
 if [ -z "$CHAT" ]; then
   RES=$(curl -s "https://api.telegram.org/bot$TOKEN/getUpdates")
